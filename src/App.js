@@ -18,6 +18,17 @@ class App extends Component {
     this.setState(state);
   }
 
+  handleRemoveItem(listItemState){
+    var itemToRemove = listItemState.item;
+    var state = this.state;
+    var index;
+    if((index = state.items.indexOf(itemToRemove)) != -1){
+      state.items.splice(index, 1);
+    }
+    this.setState(state);
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,7 +44,9 @@ class App extends Component {
           </a>
         </header>
         <div id="List" className="List">
-          <List items={this.state.items} addItem={this.handleAddItem.bind(this)}/>
+          <List   items={this.state.items}
+                  addItem={this.handleAddItem.bind(this)}
+                  removeItem={this.handleRemoveItem.bind(this)}/>
         </div>
       </div>
     );

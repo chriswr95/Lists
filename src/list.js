@@ -12,7 +12,11 @@ class List extends Component {
         <h3> To Do: </h3>
         <ul> {items.map((item) => {
           return (
-            <li key ={uuidv4()}> <ListItem item={item} key={uuidv4()} /> </li>
+            <li key ={uuidv4()}>
+              <ListItem   item={item}
+                          key={uuidv4()}
+                          removeItem = {this.props.removeItem.bind(this)}/>
+            </li>
           )
         })}
         </ul>
